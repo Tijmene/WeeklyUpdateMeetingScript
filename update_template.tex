@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{outlines}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{graphicx} % Figures
+\usepackage{soul} % Used for strikethrough
+\usepackage{hyperref} % Used for hyperlinks
+\usepackage[usenames,dvipsnames]{xcolor}
+
+\NewDocumentCommand{\strike}{O{red}O{black}+m}
+{%
+	\begingroup
+	\color{#1}%
+	\setul{-.5ex}{.4pt}%
+	\def\SOUL@uleverysyllable{%
+		\rlap{%
+			\color{#2}\the\SOUL@syllable
+			\SOUL@setkern\SOUL@charkern}%
+		\SOUL@ulunderline{%
+			\phantom{\the\SOUL@syllable}}%
+	}%
+	\ul{#3}%
+	\endgroup
+}
+
+\begin{document}
+	
+\title{\jobname}
+\author{Your Name goes here}
+\maketitle
+
+\section*{\color{cyan}What I want to discuss during the meeting}
+
+\section*{\color{cyan}What have I done/learned this week}
+	
+\section*{\color{cyan}Updated ToDo List}
+\strike[ForestGreen]{Done} % Shortcut alt+s 
+\newline
+\strike[BurntOrange]{No longer relevant} % Shortcut alt+d
+%BT
+\begin{outline}
+	\1 Active ToDo
+		\2 Active sub-todo
+	\1 \strike[ForestGreen]{Done ToDO}
+	\1 \strike[BurntOrange]{Todo that has become irrelevant}
+\end{outline}
+%ET
+
+\end{document}
