@@ -38,7 +38,7 @@ do
 		echo "checking for year ${year}"
 		if [ $year -lt 2022 ]
 		 then
-			echo "No previous directory found, press enter to exit"
+			echo "No previous directory found, not copying over previous todos. Press enter to exit"
 			read stop_var
 			exit 125
 		fi
